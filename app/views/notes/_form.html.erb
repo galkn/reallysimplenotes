@@ -1,0 +1,12 @@
+<%= form_for @note, :remote => true do |f| %>
+<%= f.error_messages %>
+<div class="note_editing_c_c">
+	<div class="fold"></div>
+	<div class="shadow_right"></div>
+	<div class="shadow_left"></div>
+	<div class="note_editing_c">
+		<%= f.text_area :body, :id => "body0", :class => "note_editing_area" %>
+	</div>
+</div>
+<p><%= f.submit "submit", :id => "submit0", :class => "submit_note_edit" %></p>
+<% end %>

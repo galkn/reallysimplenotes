@@ -1,0 +1,14 @@
+<div class="note_c" id="note<%= note.id %>_c">
+<%= link_to image_tag("destroy.png", :width => "15"), note, :confirm => 'Are you sure?', :method => :delete, :href => "/notes/#{note.id}", :remote => true, :class => "destroy_note_link" %>
+<%= form_for note, :remote => true do |f| %>
+	<div class="note_editing_c_c">
+		<div class="fold"></div>
+		<div class="shadow_right"></div>
+		<div class="shadow_left"></div>
+		<div class="note_editing_c">
+			<%= f.text_area :body, :id => "body#{note.id}", :class => "note_editing_area" %>
+		</div>
+	</div>
+	<p><%= f.submit "submit", :id => "submit#{note.id}", :class => "submit_note_edit" %></p>
+<% end %>
+</div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head><% session[:user_id] = 5 %>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <%= stylesheet_link_tag "style" %>
+    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=League+Script&v1' %>
+    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Cabin&v1' %>
+    <%= javascript_include_tag "jquery.min" %>
+    <%= javascript_include_tag "jquery-ui.min" %>
+    <%= javascript_include_tag "jquery_ujs" %>
+    <%= javascript_include_tag "jquery.sausage" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+	<div id="bg"><div id="bg_inner"></div></div>
+	<div id="content_c">
+		<div id="content">
+			
+			<%= render 'users/form' %>
+			
+			<h1>Lest I Forget</h1>
+			<p id="app_description">Autosaves everything. Sign up on top to access from a different computer or not lose data when browser empties cache.</p>
+
+			<% flash.each do |name, msg| %>
+				<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %>
+
+		    <%= yield %>
+    </div>
+  </body>
+</html>

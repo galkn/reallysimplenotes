@@ -1,0 +1,20 @@
+<% if user_signed_in? == false %>
+	<div id="register">
+	<%= form_for(@user) do |f| %>
+		<%= f.text_field :email, 
+						 :value => "Email", 
+						 :class => "field",
+						 :onclick => "if(this.value == 'Email') $(this).val('');", 
+						 :onblur => "if(this.value == '') $(this).val('Email');" %>
+
+		<%= f.text_field :password, 
+						 :value => "Password", 
+						 :class => "field",
+						 :onclick => "if(this.value == 'Password') {$(this).val(''); this.type='password';}", 
+						 :onblur => "if(this.value == '') {this.type='text'; $(this).val('Password');}" %>
+		<%= f.submit 'Sign Up', :class => "button" %>
+	<% end %>
+	</div>
+<% else %>
+	<p>Signed in! <%= link_to "Sign out", sign_out_path %></p>
+<% end %>

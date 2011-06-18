@@ -1,0 +1,223 @@
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p {
+	padding: 0;
+	margin: 0;
+	position: static;
+}
+
+.remove {
+	display: none !important;
+}
+
+ul, li {
+	list-style: none inside none;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+}
+
+a img {
+	border: none;
+	outline: none;
+}
+
+.on_the_right {
+	float: right;
+}
+
+.on_the_left {
+	float: left;
+}
+
+body {
+	font-family: "lucida grande", helvetica, arial, verdana, sans-serif;
+	font-size: 12pt;
+	position: relative;
+}
+
+body h1 {
+	font-family: 'Cabin', 'League Script', arial, serif;
+	font-size: 40pt;
+	font-weight: 100;
+	text-align: center;
+	margin: 20px 0px;
+	clear: both;
+}
+
+#bg {
+	display: none;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: #363d47 url(/images/bg.png) top left;
+}
+
+#bg_inner {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 2;
+	top: 0px;
+	left: 0px;
+	background-image: -moz-radial-gradient(#3e5c9e, transparent);
+	background-image: -o-radial-gradient(#3e5c9e, transparent);
+	background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 1500, from(#3e5c9e), to(transparent));
+	background-image: -webkit-radial-gradient(rgba(111,126,157,.7), transparent);
+}
+
+#content_c {
+	position: relative;
+	z-index: 999;
+}
+
+#content {
+	margin: 0px auto;
+	width: 700px;
+}
+
+.note_c {
+	margin: 70px 0px;
+	display: block;
+}
+
+.note_editing_area {
+	border: none;
+	outline: none;
+	background: #fff48b;
+	border: 1px solid #e9dd7c;
+	width: 100%;
+	height: 280px;
+	display: block;
+	font-size: 14pt;
+	padding: 20px;
+	width: 658px;
+	
+	background-image: -webkit-gradient(
+	    linear,
+	    right top,
+	    left top,
+	    color-stop(0, rgb(240,226,118)),
+	    color-stop(0.3, rgb(255,243,139)),
+	    color-stop(0.7, rgb(255,243,139)),
+	    color-stop(1, rgb(240,226,118))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(240,226,118) 0%,
+	    rgb(255,243,139) 50%,
+	    rgb(240,226,118) 100%
+	);
+}
+
+.note_editing_c {
+	position:relative;
+	z-index: 900;
+}
+
+.fold {
+	content:"";
+	position:absolute;
+	top:0;
+	right:0;
+	border-width:0 26px 26px 0;
+	border-style:solid;
+	border-color:#fff #fff #e8dc74 #e8dc74;
+	background:#e8dc74;
+	-webkit-box-shadow:-2px 2px 2px rgba(0,0,0,0.2);
+	-moz-box-shadow:-2px 2px 2px rgba(0,0,0,0.2);
+	box-shadow:-2px 2px 2px rgba(0,0,0,0.2);
+	display:block; 
+	width:0; 
+	z-index: 2000;
+}
+
+.note_editing_c_c {
+	position: relative;
+	width: 700px;
+	clear: both;
+}
+
+.shadow_left,
+.shadow_right {
+   content:"";
+   position:absolute;
+   z-index:800;
+   bottom:15px;
+   left:10px;
+   width:50%;
+   height:20%;
+   max-width:300px;
+   -webkit-box-shadow:0 15px 10px rgba(0, 0, 0, 0.5);
+   -moz-box-shadow:0 15px 10px rgba(0, 0, 0, 0.5);
+   box-shadow:0 15px 10px rgba(0, 0, 0, 0.5);
+   -webkit-transform:rotate(-3deg);
+   -moz-transform:rotate(-3deg);
+   -o-transform:rotate(-3deg);
+   transform:rotate(-3deg);
+}
+
+.shadow_left {
+   right:10px;
+   left:auto;
+   -webkit-transform:rotate(3deg);
+   -moz-transform:rotate(3deg);
+   -o-transform:rotate(3deg);
+   transform:rotate(3deg);
+}
+
+.submit_note_edit {
+}
+
+.sausage-set {
+	display: none;
+}
+
+.destroy_note_link {
+	float: right;
+	position: relative;
+	top: 17px;
+	z-index: 3000;
+	clear: both;
+}
+
+#flash_notice, .notice, .alert, #flash_alert {
+	padding: 10px;
+	margin: 10px 0px;
+	background: #CAF9B8;
+	border: 1px solid #94D87D;
+}
+
+#app_description {
+	color: #999;
+	font-size: 10pt;
+	font-family: cambria;
+	font-style: italic;
+	text-align: center;
+	margin: 20px 0px;
+}
+
+#register {
+	float: right;
+}
+
+.button {
+	padding: 1px 7px;
+	margin: 10px 0px;
+	background: #68a64c;
+	color: #fff;
+	font-weight: 700;
+	font-size: 9pt;
+	border: 1px solid #94D87D;
+	border-color: #3B6E22 #3B6E22 #2C5115;
+	-webkit-box-shadow:-2px 2px 2px rgba(0,0,0,0.2);
+	-moz-box-shadow:-2px 2px 2px rgba(0,0,0,0.2);
+	box-shadow:inset 0px 1px 0px rgba(255,255,255,.5);
+}
+
+.field {
+	padding: 1px 3px;
+	width: 100px;
+}

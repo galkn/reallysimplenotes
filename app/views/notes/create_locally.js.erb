@@ -1,0 +1,7 @@
+<% if @note.body.length > 0 %>
+	i = 1;
+	while(localStorage.getItem("note" + i)) {
+		i++;
+	}
+	localStorage.setItem("note" + i, "<%= escape_javascript(@note.body) %>");
+<% end %>
