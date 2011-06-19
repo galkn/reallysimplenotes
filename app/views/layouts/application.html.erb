@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head><% session[:user_id] = 5 %>
+  <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag "style" %>
     <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=League+Script&v1' %>
@@ -20,8 +20,12 @@
 			
 			<%= render 'users/form' %>
 			
-			<h1>Lest I Forget</h1>
-			<p id="app_description">Autosaves everything. Sign up on top to access from a different computer or not lose data when browser empties cache.</p>
+			<h1>(Really) Simple Notes</h1>
+			<p id="app_description">Autosaves everything. 
+				<% if !user_signed_in? %>
+					Sign up on top to access from a different computer or not lose data when browser empties cache.
+				<% end %>
+			</p>
 
 			<% flash.each do |name, msg| %>
 				<%= content_tag :div, msg, :id => "flash_#{name}" %>

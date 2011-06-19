@@ -12,9 +12,11 @@
 						 :class => "field",
 						 :onclick => "if(this.value == 'Password') {$(this).val(''); this.type='password';}", 
 						 :onblur => "if(this.value == '') {this.type='text'; $(this).val('Password');}" %>
-		<%= f.submit 'Sign Up', :class => "button" %>
+		<%= f.submit 'Sign Up/In', :class => "button" %>
 	<% end %>
 	</div>
 <% else %>
-	<p>Signed in! <%= link_to "Sign out", sign_out_path %></p>
+<div id="register">
+	<p style="margin-top: 5px; font-size: 10pt">Signed in! <%= link_to "Sign out", sign_out_path, :class => "button" %></p>
+</div>
 <% end %>

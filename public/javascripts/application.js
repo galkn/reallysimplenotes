@@ -9,23 +9,6 @@ $(document).ready(function() {
 	// Removes buttons
 	$(".submit_note_edit").remove();
 	
-	// Get a space for all the locally-stored notes
-	/*
-	$.ajax({
-      url: '/notes',
-      type: 'get',
-      dataType: 'script',
-      success: function() {
-		// Fetch the locally-stored notes and place them in the DOM
-		i = 1;
-		while(note = localStorage.getItem("note" + i)) {
-			$("#body" + i).val(note);
-			i++;
-		}
-      }
-    });
-	*/
-	
 	// Saves the notes after you edit them
 	var timerId = null;
 	$('.note_editing_area').keyup(function(){

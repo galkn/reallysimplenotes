@@ -19,4 +19,15 @@ module UsersHelper
     session[:user_id] = nil
   end
   
+  def get_existing_or_generate_new_token
+    token = cookies[:token] 
+    token.nil? ? new_token : token
+  end
+  
+  def new_token
+    token = rand(100**10).to_s(36)
+    cookies[:token] = { :value => token, :expires => 1.year.from_now }
+    return token
+  end
+  
 end

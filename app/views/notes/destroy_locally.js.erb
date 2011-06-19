@@ -1,6 +1,0 @@
-i = parseInt(<%= @local_note_id_to_destroy %>);
-while(localStorage.getItem("note" + i)) {
-	localStorage.setItem("note" + i, localStorage.getItem("note" + (i+1)));
-	i++;
-}
-localStorage.setItem("note" + i, "");

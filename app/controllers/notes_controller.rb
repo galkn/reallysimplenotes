@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_filter :get_notes, :except => [:show]
+  before_filter :get_note_by_id, :only => [:show, :destroy, :update]
   
   def index
     @note = Note.new
@@ -12,36 +13,29 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = Note.find(params[:id])
   end
 
   def destroy
-    if user_signed_in?
-      @note = current_user.notes.find(params[:id])
-      @note_id = @note.id
-      @note.destroy
-      respond_to do |format|
-        format.html { redirect_to notes_url, :notice => "Successfully destroyed note." }
-        format.js
-      end
-    else
-      @local_note_id_to_destroy = params[:id]
-      respond_to do |format|
-        format.html { redirect_to notes_url, :notice => "Could not destroy note locally. Please sign up or enable Javascript in your browser." }
-        format.js { render :action => "destroy_locally" }
-      end
+    @note_id = @note.id
+    @note.destroy
+    respond_to do |format|
+      format.html { redirect_to notes_url, :notice => "Successfully destroyed note." }
+      format.js
     end
   end
 
   def update
-    if user_signed_in?
-      @note = Note.find(params[:id])
-      if @note.update_attributes(params[:note])
-        redirect_to notes_url, :notice  => "Successfully updated note."
-      else
-        redirect_to notes_url, :notice  => "Could not update note. Try later or refresh."
-      end
+    redirect_to notes_url if @note.nil?
+    
+    if @note.update_attributes(params[:note])
+      notice = "Successfully updated note."
     else
+      notice = "Could not update note. Try later or refresh."
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to notes_url, :notice => notice }
+      format.js
     end
   end
 
@@ -49,30 +43,33 @@ class NotesController < ApplicationController
     @note = Note.new(params[:note])
     if user_signed_in?
       @note.user_id = current_user.id
-      if @note.save
-        respond_to do |format|
-          format.html { redirect_to notes_url, :notice => "Successfully created note." }
-          format.js
-        end
-      else
-        respond_to do |format|
-          format.html { render :action => 'index' }
-          format.js { render :action => "create_fail" }
-        end
-      end
     else
-      respond_to do |format|
-        format.html { redirect_to notes_url, :notice => "Could not save note locally. Please sign up or enable Javascript in your browser." }
-        format.js { render :action => "create_locally" }
-      end
+      @note.token = get_existing_or_generate_new_token
+    end
+    @note.save
+    respond_to do |format|
+      format.html { redirect_to notes_url, :notice => "Successfully created note." }
+      format.js
     end
   end
   
   private
   
+    def get_note_by_id
+      if user_signed_in?
+        @note = current_user.notes.find(params[:id])
+      else
+        @note = Note.find_by_id_and_token(params[:id], get_existing_or_generate_new_token)
+      end
+    end
+  
     def get_notes
-      @notes = []
-      @notes = current_user.notes.order("created_at DESC").page params[:page] if user_signed_in?
+      if user_signed_in?
+        @notes = current_user.notes.order("created_at DESC").page params[:page]
+      else
+        @notes = Note.where(:token => get_existing_or_generate_new_token).order("created_at DESC").page params[:page]
+      end
+      @notes ||= []
     end
 
 end

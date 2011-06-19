@@ -1,32 +1,4 @@
-
 <% if !@notes.blank? %>
 	$("#notes_c").append("<div class='page'><%= escape_javascript(render(@notes)) %></div>");
 	$(".submit_note_edit").remove();
 <% end %>
-/*
-// ****** Locally ******
-<% if !user_signed_in? %>
-	// Get notes from local storage
-	
-	<% if @notes_page.nil? %>
-		<% (1..2).each do |i| %>
-			note = localStorage.getItem("note" + <%= i %>);
-			if(note.length > 0) {
-				<% note = Note.new :body => "", :id => i %> 
-				$("#notes_c").append("<div class='page'><%= escape_javascript(render(note)) %></div>");
-			}
-		<% end %>
-	<% else %>
-		<% i = @notes_page %>
-		note = localStorage.getItem("note" + <%= i %>);
-		if(note.length > 0) {
-			<% note = Note.new :body => "", :id => i %> 
-			$("#notes_c").append("<div class='page'><%= escape_javascript(render(note)) %></div>");
-		}
-	<% end %>
-	
-	
-	
-	$(".submit_note_edit").remove();
-<% end %>
-*/
