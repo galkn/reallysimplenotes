@@ -4,6 +4,8 @@
 
 RSN is a really simple app for keeping notes. Working example: http://reallysimplenotes.heroku.com
 
+Download and deploy to use and store your notes locally.
+
 == Installation
 * download and unzip
 * cd ReallySimpleNotes
