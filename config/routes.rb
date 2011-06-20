@@ -1,4 +1,4 @@
-Noterrific::Application.routes.draw do
+ReallySimpleNotes::Application.routes.draw do
     
   get "sign_out" => "users#sign_out", :as => :sign_out  
   
