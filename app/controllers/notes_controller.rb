@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
-  before_filter :get_notes, :except => [:show]
-  before_filter :get_note_by_id, :only => [:show, :destroy, :update]
+  before_filter :get_notes
+  before_filter :get_note_by_id, :only => [:destroy, :update]
   
   def index
     @note = Note.new
@@ -10,9 +10,6 @@ class NotesController < ApplicationController
       format.html
       format.js { render :action => "index" }
     end
-  end
-
-  def show
   end
 
   def destroy

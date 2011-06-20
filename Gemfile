@@ -8,7 +8,6 @@ gem 'sqlite3'
 gem "json"
 
 gem 'kaminari'
-gem "delayed_job"
 
 gem "omniauth"
 gem "devise"
