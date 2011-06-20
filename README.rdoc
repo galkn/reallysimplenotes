@@ -1,0 +1,14 @@
+= ReallySimpleNotes
+
+== What is this?
+
+RSN is a mini app for keeping notes. You don't have to create an account but should if you want to access
+from a different computer/device. It's pretty simple. 
+
+== Installation
+* download and unzip
+* cd ReallySimpleNotes
+* bundle install
+* bundle exec rake db:migrate
+* rails s
+* have fun!
