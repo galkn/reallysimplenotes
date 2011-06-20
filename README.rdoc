@@ -2,8 +2,7 @@
 
 == What is this?
 
-RSN is a mini app for keeping notes. You don't have to create an account but should if you want to access
-from a different computer/device. It's pretty simple. 
+RSN is a really simple app for keeping notes. Working example: http://reallysimplenotes.heroku.com/
 
 == Installation
 * download and unzip
