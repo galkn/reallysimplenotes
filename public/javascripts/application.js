@@ -3,6 +3,23 @@
 
 $(document).ready(function() {
 	
+	// Load notes into application
+	function load_pages(counter) {
+		$.ajax({
+			url: '/notes?page=' + counter,
+			type: 'get',
+			dataType: 'script',
+			success: function() {
+				$(window).sausage('draw');
+				loading=false;
+				if ($("body").height() < $(window).height()) {
+					load_pages(counter+1);
+				}
+			}
+		});
+	}
+	load_pages(0);
+	
 	// Focus on the first textarea
 	$("textarea:first").focus();
 	
@@ -16,7 +33,6 @@ $(document).ready(function() {
 			clearTimeout(timerId);
 		}
 		var noteVal = $(this).val();
-		var noteId = $(this).attr("id").replace("body", "");
 		var noteId = $(this).attr("id");
 		timerId = setTimeout(function() {
 			if(noteVal != "") {

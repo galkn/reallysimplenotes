@@ -30,14 +30,17 @@ a img {
 	float: left;
 }
 
-body {
+body, textarea, input {
 	font-family: "lucida grande", helvetica, arial, verdana, sans-serif;
+}
+
+body {
 	font-size: 12pt;
 	position: relative;
 }
 
 body h1 {
-	font-family: 'Cabin', 'League Script', arial, serif;
+	font-family: 'Cabin', helvetica, arial, verdana, sans-serif;
 	font-size: 40pt;
 	font-weight: 100;
 	text-align: center;

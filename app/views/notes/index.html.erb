@@ -1,10 +1,11 @@
 
-<%= render 'form' %>
-
 <div id="notes_c">
+	<div class='page'><%= render 'note', :note => Note.new %></div>
+	<!--
 	<div class="page">
-	<% for note in @notes %>
-		<%= render "note", :note => note %>
-	<% end %>
+	<%# for note in @notes %>
+		<%#= render "note", :note => note %>
+	<%# end %>
 	</div>
+	-->
 </div>
