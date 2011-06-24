@@ -11,6 +11,14 @@ class UsersController < ApplicationController
     
     if @user.save
       sign_in @user
+      
+      if !cookies[:token].nil?
+        Note.find_all_by_token(cookies[:token]).each do |note|
+          note.user_id = @user.id
+          note.save
+        end
+      end
+      
       redirect_to root_url, :notice => "Welcome, start typing#{@user.notes.count == 0 ? " your first note" : ""}."
     else
       redirect_to root_url, :notice => "You have an error"

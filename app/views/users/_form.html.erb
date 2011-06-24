@@ -14,6 +14,18 @@
 						 :onblur => "if(this.value == '') {this.type='text'; $(this).val('Password');}" %>
 		<%= f.submit 'Sign Up/In', :class => "button" %>
 	<% end %>
+	<script>
+	// Make password field password type after tabbing from email field
+	$(function() {
+		$('#user_email').bind('keydown', function(e) {
+			var keyCode = e.keyCode;
+			if (keyCode == 9) {
+				$("#user_password").val("");
+				document.getElementById("user_password").type = 'password';
+			}
+		});
+	});
+	</script>
 	</div>
 <% else %>
 <div id="register">
