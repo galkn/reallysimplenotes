@@ -2,6 +2,8 @@ ReallySimpleNotes::Application.routes.draw do
     
   get "sign_out" => "users#sign_out", :as => :sign_out  
   
+  match "notes/create_or_update_note/:id" => "notes#create_or_update", :as => :hell
+  
   resources :users
 
   root :to => "notes#index"

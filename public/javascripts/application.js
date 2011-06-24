@@ -3,46 +3,24 @@
 
 $(document).ready(function() {
 	
-	// Load notes into application
-	function load_pages(counter) {
-		$.ajax({
-			url: '/notes?page=' + counter,
-			type: 'get',
-			dataType: 'script',
-			success: function() {
-				$(window).sausage('draw');
-				loading=false;
-				if ($("body").height() < $(window).height()) {
-					load_pages(counter+1);
-				}
-			}
-		});
-	}
-	load_pages(0);
-	
-	// Focus on the first textarea
-	$("textarea:first").focus();
-	
-	// Removes buttons
-	$(".submit_note_edit").remove();
-	
-	// Saves the notes after you edit them
+	// Saves the newly created note
 	var timerId = null;
-	$('.note_editing_area').keyup(function(){
+	$('#body').keyup(function(){
 		if (timerId) {
 			clearTimeout(timerId);
 		}
 		var noteVal = $(this).val();
-		var noteId = $(this).attr("id");
 		timerId = setTimeout(function() {
 			if(noteVal != "") {
-				$("#" + noteId).trigger("submit");			
+				$("#new_note").trigger("submit");			
 			}
 		}, 1000);
 	});
 	
-	(function() {
-	  var page = 1,
+	// Get more notes as scroll
+	function get_more_notes_as_scroll(counter) {
+
+	  var page = counter,
 	      loading = false;
 
 	  function nearBottomOfPage() {
@@ -70,6 +48,32 @@ $(document).ready(function() {
 	  });
 
 	  $(window).sausage();
-	}());
+	}
+	
+	// Load notes into application
+	function load_pages(counter) {
+		$.ajax({
+			url: '/notes?page=' + counter,
+			type: 'get',
+			dataType: 'script',
+			success: function(data) {
+				$(window).sausage('draw');
+				loading=false;
+				if (($("body").height() < $(window).height()) && ($.trim(data).length > 0)) {
+					load_pages(counter+1);
+				} else {
+					get_more_notes_as_scroll(counter);
+				}
+			}
+		});
+		return counter;
+	}
+	load_pages(1);
+	
+	// Focus on the first textarea
+	$("textarea:first").focus();
+	
+	// Removes buttons
+	$(".submit_note_edit").remove();
 	
 });

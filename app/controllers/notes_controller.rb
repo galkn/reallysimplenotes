@@ -20,19 +20,6 @@ class NotesController < ApplicationController
       format.js
     end
   end
-  
-  def create_or_update
-    if @note.nil?
-      @note = Note.new(params[:note])
-      if user_signed_in?
-        @note.user_id = current_user.id
-      else
-        @note.token = get_existing_or_generate_new_token
-      end
-      respond_to do |format|
-        format.html { redirect_to notes_url, :notice => "Successfully created note." }
-        format.js
-      end
 
   def update
     redirect_to notes_url if @note.nil?
