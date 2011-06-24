@@ -7,7 +7,7 @@ RSN is a really simple app for keeping notes. Working example: http://reallysimp
 Download and deploy to use and store your notes locally.
 
 == Installation
-* download and unzip
+* Clone a fresh repo / download and unzip
 * cd ReallySimpleNotes
 * bundle install
 * bundle exec rake db:migrate
