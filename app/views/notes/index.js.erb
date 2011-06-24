@@ -2,20 +2,6 @@
 	$("#notes_c").append("<div class='page'><%= escape_javascript(render(@notes)) %></div>");
 	$(".submit_note_edit").remove();
 	
-	// Saves the notes after you edit them
-	var timerId = null;
-	$('.note_editing_area').keyup(function(){
-		if (timerId) {
-			clearTimeout(timerId);
-		}
-		var noteVal = $(this).val();
-		var noteHtmlId = $(this).attr("id");
-		var noteId = noteHtmlId.replace("body", "");
-		timerId = setTimeout(function() {
-			if(noteVal != "") {
-				$("#edit_note_" + noteId).trigger("submit");			
-			}
-		}, 1000);
-	});
+	<%= render "save_note_after_edit" %>
 <% end %>
 

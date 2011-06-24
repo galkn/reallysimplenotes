@@ -42,7 +42,7 @@ class NotesController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to notes_url, :notice => notice }
-        format.js
+        format.js { render :action => "update" }
       end
     end
 
@@ -56,7 +56,7 @@ class NotesController < ApplicationController
       @note.save
       respond_to do |format|
         format.html { redirect_to notes_url, :notice => "Successfully created note." }
-        format.js
+        format.js { render :action => "create" }
       end
     end
   

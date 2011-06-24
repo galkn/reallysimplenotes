@@ -1,5 +1,9 @@
 
-var form = $("#new_note");
-form.attr("action", "/create_or_update_note/<%= @note.id %>");
-form.attr("id", "edit_note_<%= @note.id %>");
-$("#edit_note_<%= @note.id %> .note_editing_area").attr("id", "body<%= @note.id %>");
+$("#notes_c .page:first").replaceWith("<div class='page'><%= escape_javascript(render(@note)) %></div>");
+
+<%= render "put_cursor_at_end" %>
+
+<%= render "save_note_after_edit" %>
+
+// Removes buttons
+$(".submit_note_edit").remove();
