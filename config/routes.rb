@@ -2,13 +2,13 @@ ReallySimpleNotes::Application.routes.draw do
     
   get "sign_out" => "users#sign_out", :as => :sign_out  
   
-  match "notes/create_or_update_note/:id" => "notes#create_or_update", :as => :hell
+  match 'create_or_update_note' => 'notes#create_or_update_note'
+  match 'create_or_update_note/:id/' => 'notes#create_or_update_note'
   
   resources :users
+  resources :notes
 
   root :to => "notes#index"
-  
-  resources :notes
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

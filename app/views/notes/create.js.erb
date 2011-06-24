@@ -1,3 +1,5 @@
+
 var form = $("#new_note");
-form.attr("action", "<%= note_url @note %>");
+form.attr("action", "/create_or_update_note/<%= @note.id %>");
 form.attr("id", "edit_note_<%= @note.id %>");
+$("#edit_note_<%= @note.id %> .note_editing_area").attr("id", "body<%= @note.id %>");
