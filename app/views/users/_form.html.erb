@@ -1,3 +1,4 @@
+<div id="sessions_c">
 <% if user_signed_in? == false %>
 	<div id="register">
 	<%= form_for(@user) do |f| %>
@@ -32,3 +33,4 @@
 	<p style="margin-top: 5px; font-size: 10pt">Signed in! <%= link_to "Sign out", sign_out_path, :class => "button" %></p>
 </div>
 <% end %>
+</div>
