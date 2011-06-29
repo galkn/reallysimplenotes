@@ -62,7 +62,7 @@ class NotesController < ApplicationController
   
     def get_note_by_id
       if user_signed_in?
-        @note = current_user.notes.find(params[:id])
+        @note = current_user.notes.find(params[:id]) if !params[:id].nil?
       else
         @note = Note.find_by_id_and_token(params[:id], get_existing_or_generate_new_token)
       end
